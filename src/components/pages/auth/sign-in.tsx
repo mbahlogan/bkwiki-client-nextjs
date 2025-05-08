@@ -19,7 +19,6 @@ import authActions from "@/redux/modules/auth/authActions";
 import { selectUser } from "@/redux/modules/auth/authSelectors";
 import { UserState } from "@/redux/modules/auth/authReducer";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { toast } from "sonner"
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -40,9 +39,7 @@ export default function SignIn() {
 
   function onSubmit(user: z.infer<typeof formSchema>) {
     dispatch(authActions.loginUser(user));
-    toast("Login successful", {
-        description: "Welcome back"
-    })
+
   }
 
   return (
