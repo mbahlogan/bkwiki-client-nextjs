@@ -9,7 +9,7 @@ export default function ATMs(props: ATMType & { onClick?: any }) {
     <Link href={"/atms?current=" + props._id}>
       <div
         onClick={props.onClick ? props.onClick : null}
-        className="block relative overflow-hidden pb-3 rounded-lg  shadow-xl  bg-white"
+        className="block relative overflow-hidden pb-3 rounded-lg  shadow-xl bg-white"
       >
         <span className="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"></span>
         <img

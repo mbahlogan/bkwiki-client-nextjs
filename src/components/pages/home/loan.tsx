@@ -7,7 +7,7 @@ export default function Loan(props: LoanType) {
   return (
     <Link href={`/loans/${props._id}`}>
       <div
-        className="relative block overflow-hidden rounded-lg border border-gray-300 p-4 sm:p-6 lg:p-8"
+        className="relative block overflow-hidden rounded-lg border border-gray-300 p-4 sm:p-6 lg:p-8 shadow-lg"
       >
         <span className="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"></span>
 

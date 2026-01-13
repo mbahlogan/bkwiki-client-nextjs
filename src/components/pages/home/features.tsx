@@ -81,7 +81,7 @@ export default function Features() {
                   onClick={() => setSearch(item.value)}
                   className={` text-left w-full font-medium text-base hover:no-underline rounded-sm justify-start ${
                     search === item.value
-                      ? "active border-2 border-primary text-primary"
+                      ? "active bg-primary text-white"
                       : "!text-gray-600"
                   }`}
                 >

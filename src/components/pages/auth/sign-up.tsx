@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import AuthLayout from "./layout";
 import Link from "next/link";
 import { z } from "zod";
@@ -17,11 +17,10 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Checkbox } from "@/components/ui/checkbox";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { selectUser } from "@/redux/modules/auth/authSelectors";
-import { UserState } from "@/redux/modules/auth/authReducer";
-import authActions from "@/redux/modules/auth/authActions";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { authClient } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 const validationSchema = z.object({
   email: z.string().email(),
@@ -46,43 +45,67 @@ const initialValues = {
 type FormData = z.infer<typeof validationSchema>;
 
 export default function SignUp() {
-  const user: typeof UserState.user = useAppSelector(selectUser);
-  const dispatch = useAppDispatch();
+  const router = useRouter();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const form = useForm<FormData>({
     resolver: zodResolver(validationSchema),
     defaultValues: initialValues,
   });
 
-  const { setError, clearErrors, watch } = form;
+  const { setError: setFormError, clearErrors, watch } = form;
   const pwd = watch("pwd");
   const confirmPwd = watch("confirmPwd");
 
   useEffect(() => {
     if (pwd !== confirmPwd) {
-      setError("confirmPwd", {
+      setFormError("confirmPwd", {
         type: "manual",
         message: "Passwords do not match",
       });
     } else {
       clearErrors("confirmPwd");
     }
-  }, [pwd, confirmPwd, setError, clearErrors]);
+  }, [pwd, confirmPwd, setFormError, clearErrors]);
 
-  function onSubmit(user: FormData) {
-    const { agreeToTerms, confirmPwd, ...body } = user;
+  async function onSubmit(values: FormData) {
+    if (!values.agreeToTerms) {
+      toast.error("You must agree to the terms and conditions");
+      return;
+    }
 
-    dispatch(authActions.signInUser(body));
+    setLoading(true);
+    setError(null);
+
+    await authClient.signUp.email(
+      {
+        email: values.email,
+        password: values.pwd,
+        name: `${values.fname} ${values.lname}`,
+        image: undefined, // better-auth expects image property in user type generally
+      },
+      {
+        onSuccess: () => {
+          toast.success("Account created successfully");
+          router.push("/");
+        },
+        onError: (ctx) => {
+          setError(ctx.error.message);
+          setLoading(false);
+        },
+      }
+    );
   }
 
   return (
     <AuthLayout>
       <Form {...form}>
-        {user.error && (
+        {error && (
           <Alert variant="destructive" className="bg-red-50 mt-4">
-            <AlertTitle>Incorrect credentials</AlertTitle>
+            <AlertTitle>Error</AlertTitle>
             <AlertDescription>
-              Please enter your correct credentials to login
+              {error}
             </AlertDescription>
           </Alert>
         )}
@@ -232,7 +255,7 @@ export default function SignUp() {
           </div>
 
           <div className="col-span-6 sm:flex sm:items-center sm:gap-4">
-            <Button loading={user.loading}>Create an account</Button>
+            <Button loading={loading}>Create an account</Button>
 
             <p className="mt-4 text-sm text-gray-500 sm:mt-0">
               Already have an account?
@@ -246,3 +269,4 @@ export default function SignUp() {
     </AuthLayout>
   );
 }
+

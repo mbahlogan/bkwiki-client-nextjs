@@ -7,7 +7,7 @@ import React from "react";
 export default function Card(props: CardType) {
   return (
     <Link className="h-full" href={"/cards/" + props._id}>
-      <div className="block relative overflow-hidden p-0 rounded-lg border border-gray-300 h-[320px]">
+      <div className="block relative overflow-hidden p-0 rounded-lg border border-gray-300 h-[320px] shadow-lg">
         <span className="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"></span>
         <img
           alt=""

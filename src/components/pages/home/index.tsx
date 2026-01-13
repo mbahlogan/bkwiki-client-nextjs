@@ -2,12 +2,15 @@
 import Hero from "@/components/hero";
 import PageLayout from "@/components/layout";
 import { useAppDispatch } from "@/redux/hooks";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import Features from "./features";
-import Review from "./review";
-import Claim from "./claim";
-import About from "./about";
+import InfoSection from "./info-section";
+import NewsSlider from "./news-slider";
+import Testimonials from "./testimonials";
+import ArticlesSection from "./articles-section";
 import atmAction from "@/redux/modules/atms/atm.action";
+// ... (imports are condensed in view but I will just add the import at the top and component in the return)
+
 import bankAction from "@/redux/modules/bank/bank.action";
 import { StringParam, useQueryParam } from "use-query-params";
 import cardAction from "@/redux/modules/card/card.action";
@@ -17,7 +20,7 @@ export default function Home() {
   const dispatch = useAppDispatch();
   const [search = "banks", _] = useQueryParam("s", StringParam);
 
-  const getData = (type: "banks" | "atm" | "cards" | "loans"  | any) => {
+  const getData = (type: "banks" | "atm" | "cards" | "loans" | any) => {
     switch (type) {
       case "atms":
         return dispatch(atmAction.getAtms());
@@ -38,8 +41,10 @@ export default function Home() {
     <PageLayout>
       <Hero />
       <Features />
-      <Review />
-      <Claim />
+      <InfoSection />
+      <NewsSlider />
+      <Testimonials />
+      <ArticlesSection />
     </PageLayout>
   );
 }
