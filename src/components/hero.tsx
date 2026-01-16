@@ -37,45 +37,45 @@ const Hero = () => {
     <section className="bg-gray-50 relative overflow-hidden h-[90vh] flex items-center justify-center">
       {/* Decorative Background Images */}
       {/* Top Left - Vector 1 */}
-      <div className="absolute top-0 left-0 z-0 hidden lg:block">
+      <div className="absolute top-0 left-[-20] sm:left-[-15] md:left-0 lg:left-[-30] z-0">
         <NextImage
           src="/assets/third-vector.png"
           alt="Decorative Element"
           width={170}
           height={170}
-          className="object-contain"
+          className="object-contain w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 xl:w-64 xl:h-64"
         />
       </div>
 
       {/* Top Right - Vector 2 */}
-      <div className="absolute top-0 right-0 z-0 hidden lg:block">
+      <div className="absolute top-0 right-[-20] sm:right-[-15] md:right-10 lg:right-[-30] z-0">
         <NextImage
           src="/assets/second-vector.png"
           alt="Decorative Element"
           width={200}
           height={200}
-          className="object-contain"
+          className="object-contain w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 xl:w-64 xl:h-64"
         />
       </div>
 
       {/* Bottom Left - Vector 3 */}
-      <div className="absolute bottom-[80px] left-[-20px] z-0 hidden lg:block">
+      <div className="absolute bottom-[80px] left-[-30px] z-0">
         <NextImage
           src="/assets/star.png"
           alt="Decorative Element"
           width={120}
           height={120}
-          className="object-contain"
+          className="object-contain w-32 h-32 sm:w-30 sm:h-30 md:w-48 md:h-48 lg:w-56 lg:h-56 xl:w-64 xl:h-64"
         />
       </div>
 
-      <div className="absolute bottom-[-30px] left-[580px] z-0 hidden lg:block">
+      <div className="absolute bottom-[-30px] left-80 sm:left-[-40] md:left-[580px] z-0">
         <NextImage
           src="/assets/arrow-vector.png"
           alt="Decorative Element"
           width={190}
           height={190}
-          className="object-contain"
+          className="object-contain w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 xl:w-64 xl:h-64"
         />
       </div>
 
@@ -86,7 +86,7 @@ const Hero = () => {
           alt="Decorative Element"
           width={250}
           height={300}
-          className="object-contain"
+          className="object-contain w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 xl:w-64 xl:h-64"
         />
       </div>
 

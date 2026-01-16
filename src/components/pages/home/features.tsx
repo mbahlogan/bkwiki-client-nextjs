@@ -59,9 +59,9 @@ export default function Features() {
       name: "Bank loans",
     },
   ];
-  
 
-  const {data = [], loading} = getData(search)
+
+  const { data = [], loading } = getData(search)
 
 
   return (
@@ -79,11 +79,10 @@ export default function Features() {
                   variant="link"
                   key={item.value}
                   onClick={() => setSearch(item.value)}
-                  className={` text-left w-full font-medium text-base hover:no-underline rounded-sm justify-start ${
-                    search === item.value
-                      ? "active bg-primary text-white"
-                      : "!text-gray-600"
-                  }`}
+                  className={` text-left w-full font-medium text-base hover:no-underline rounded-sm justify-start ${search === item.value
+                    ? "active bg-primary text-white"
+                    : "!text-gray-600"
+                    }`}
                 >
                   {item.name}
                 </Button>
@@ -92,10 +91,10 @@ export default function Features() {
           </div>
           <div className="md:w-1/2 lg:w-4/5 mx-auto items-center">
             <div className="flex justify-end">
-              <Link href={"/"+search}>              
-              <Button variant="link">
-                See all {search}
-              </Button>
+              <Link href={"/" + search}>
+                <Button variant="link">
+                  See all {search}
+                </Button>
               </Link>
             </div>
 
@@ -103,19 +102,19 @@ export default function Features() {
             {loading && <Skeleton className="w-full h-56 flex justify-center items-center">
               Loading
             </Skeleton>}
-           {!loading && <div className="grid grid-cols-2 gap-5">
+            {!loading && <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <List
                 data={data}
-                renderer={(contentItem: any) => {
+                renderer={(contentItem: any, index: number) => {
                   switch (search) {
                     case "atms":
-                      return <ATMs {...contentItem} />
+                      return <ATMs key={contentItem._id || index} {...contentItem} />
                     case "banks":
-                      return <Bank {...contentItem} />
+                      return <Bank key={contentItem._id || index} {...contentItem} />
                     case "cards":
-                      return <Card {...contentItem} />
+                      return <Card key={contentItem._id || index} {...contentItem} />
                     case "loans":
-                      return <Loan {...contentItem} />
+                      return <Loan key={contentItem._id || index} {...contentItem} />
                   }
                 }}
               />

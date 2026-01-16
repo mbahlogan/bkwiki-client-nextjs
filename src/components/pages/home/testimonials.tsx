@@ -42,7 +42,7 @@ const TESTIMONIALS_DATA = [
 
 export default function Testimonials() {
     return (
-        <section className="py-16 px-[200px] bg-white overflow-hidden relative">
+        <section className="py-16 px-4 md:px-20 lg:px-[200px] bg-white overflow-hidden relative">
             <div className="mx-auto px-6">
                 <Typography variant="title" size="mid" className="font-bold text-sky-700 mb-10 pl-2">
                     Testimonials
@@ -84,7 +84,7 @@ export default function Testimonials() {
                                 <div className="bg-[#357ba6] text-white rounded-3xl p-8 h-full flex flex-col md:flex-row gap-6 relative overflow-hidden shadow-lg transition-transform hover:-translate-y-1 duration-300">
                                     {/* Optional background decoration for the card if needed, staying simple for now */}
 
-                                    <div className="flex-shrink-0 flex flex-col items-center md:items-start min-w-[120px]">
+                                    <div className="flex-shrink-0 flex flex-col items-start min-w-[120px]">
                                         <div className="w-20 h-20 relative rounded-full overflow-hidden border-2 border-white/20 mb-3">
                                             <Image
                                                 src={item.avatar}
@@ -93,11 +93,11 @@ export default function Testimonials() {
                                                 className="object-cover"
                                             />
                                         </div>
-                                        <h4 className="font-bold text-base text-center md:text-left">{item.name}</h4>
-                                        <p className="text-xs text-white/80 text-center md:text-left">{item.role}</p>
+                                        <h4 className="font-bold text-base text-left">{item.name}</h4>
+                                        <p className="text-xs text-white/80 text-left">{item.role}</p>
                                     </div>
 
-                                    <div className="flex-1 text-center md:text-left">
+                                    <div className="flex-1 text-left">
                                         <h3 className="text-xl font-bold mb-3 leading-tight">
                                             {item.title}
                                         </h3>
