@@ -66,6 +66,7 @@ export type BankType = {
   logo: {
     url: string;
   };
+  type: string;
 
   localName: string;
   mainShareholder: string;

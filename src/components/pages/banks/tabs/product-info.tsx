@@ -12,81 +12,52 @@ import VideoReview from "@/components/video-review";
 import { BankType } from "@/types";
 import { AppWindowMac, Gem, Globe, MapPin, MessageCircle, UserCircle, Users } from "lucide-react";
 import React from "react";
+import ReviewForm from "./review-form";
 
 export default function ProductInfo(props: BankType) {
-  
+
   return (
     <>
-      <TabInfoContainer title={`${props.localName} Reviews & Details`}>
-        <Fieldset title={`${props.localName} Overview`}>
+      <TabInfoContainer>
+        <Fieldset title={`About ${props.localName}`}>
           <div className="p-6">
-            <Description title={`About ${props.localName}?`}>
+            <Description>
               {props.description}
             </Description>
 
             <div className="border-t border-gray-300 mt-6 py-5">
-              <Typography>{props.name} Details</Typography>
+              <Typography className="text-sky-700">{props.name} Details</Typography>
 
-              <div className="pt-2">
-                <div className="flex pb-2">
-                  <ProductDetail
-                    title="Bank Website"
-                    desc={props.name}
-                    url="https://www.g2.com"
-                    icon={<AppWindowMac />}
-                  />
-                  <ProductDetail
-                    title="Languages Supported"
-                    desc="English"
-                    icon={<Globe />}
-                  />
-                </div>
+              <div className="pt-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <ProductDetail title="Bank Name" desc={props.name} icon={<Gem />} />
+                <ProductDetail
+                  title="DG"
+                  desc={props.nameDG}
+                  icon={<UserCircle />}
+                />
+                <ProductDetail
+                  title="Headquater"
+                  desc={props.headquarter}
+                  icon={<MapPin />}
+                />
+
+                <ProductDetail
+                  title="Bank Website"
+                  desc={props.name}
+                  url={props.website || "https://www.g2.com"}
+                  icon={<AppWindowMac />}
+                />
+                <ProductDetail
+                  title="Customers"
+                  desc={props.customerCount}
+                  icon={<Users />}
+                />
                 <ProductDetail
                   title="Discussions"
                   desc={`${props.name} Community`}
-                  url="https://www.g2.com/"
+                  url="#"
                   icon={<MessageCircle />}
                 />
-              </div>
-            </div>
-
-            <div className="border-t border-gray-300 mt-6 py-5">
-              <Typography>Bank Details</Typography>
-
-              <div className="py-2">
-                <div className="flex pb-2">
-                  <ProductDetail title="Bank Name" desc={props.name} icon={<Gem />} />
-                  <ProductDetail
-                    title="Languages Supported"
-                    desc="English"
-                    icon={<Globe />}
-                  />
-                </div>
-                <div className="flex pb-2">
-                  <ProductDetail
-                    title="DG"
-                    desc={props.nameDG}
-                    icon={<UserCircle />}
-                  />
-                  <ProductDetail
-                    title="Headquater"
-                    desc={props.headquarter}
-                    icon={<MapPin fontSize="28px" />}
-                  />
-                </div>
-                <div className="flex pb-2">
-                  <ProductDetail
-                    title="Company Website"
-                    desc={props.website}
-                    url={props.website}
-                    icon={<AppWindowMac />}
-                  />
-                  <ProductDetail
-                    title="Customers"
-                    desc={props.customerCount}
-                    icon={<Users fontSize="28px" />}
-                  />
-                </div>
               </div>
             </div>
           </div>
@@ -130,12 +101,14 @@ export default function ProductInfo(props: BankType) {
             <Button>See all video reviews</Button>
           </div>
         </Fieldset>
-      </TabInfoContainer>
+      </TabInfoContainer> */}
+
       <TabInfoContainer title="Reviews">
         <div className="space-y-8">
+          <ReviewForm />
           <Comment />
         </div>
-      </TabInfoContainer> */}
+      </TabInfoContainer>
     </>
   );
 }

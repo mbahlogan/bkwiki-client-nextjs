@@ -1,7 +1,6 @@
-import React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Typography } from "./ui/typography";
-import { Ellipsis, Heart, Link, Mail, Menu, MessageSquare, Share, ThumbsUp } from "lucide-react";
+import { Ellipsis, Heart, Link, Mail, MessageSquare, ThumbsUp } from "lucide-react";
 import Rating from "./rating";
 import Description from "./description";
 import { FaRegShareSquare } from "react-icons/fa";

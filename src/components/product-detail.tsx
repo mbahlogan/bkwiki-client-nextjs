@@ -9,10 +9,10 @@ export default function ProductDetail({ icon, title, desc, url }: ProductDetailT
     <div className="flex gap-3 flex-1">
       <Icon />
       <div>
-        <Typography>{title}</Typography>
+        <Typography className='text-primary'>{title}</Typography>
         {url ? (
           <Link href={url}>
-            <Typography size="sm" className="text-primary">
+            <Typography size="sm">
               {desc}
             </Typography>
           </Link>
